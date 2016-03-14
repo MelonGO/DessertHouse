@@ -1,0 +1,147 @@
+body.main {
+    /*background-color: #555555;*/
+    overflow-x: hidden;
+    background: url("/DessertHouseWeb/img/bg.jpg");
+    background-size:cover;
+}
+
+body.login {
+    background-color: silver;
+}
+
+body.recharge {
+	background-color: silver;
+}
+
+body.user-info {
+	overflow-x: hidden;
+    background: url("/DessertHouseWeb/img/info.jpg");
+    background-size:cover;
+}
+
+.navbar-right-padding {
+    padding-right: 50px;
+}
+
+footer p { color: #fff; }
+ul.legals { list-style: none; color: #fff; line-height: 25px; }
+ul.legals li { display: inline-block; }
+ul.legals li::after { content: " |"; }
+ul.legals li:last-child::after { content: ""; }
+.legals { text-align: left; }
+.credit { text-align: right; }
+
+footer {
+    background-color: #3c3c3c;
+    padding: 40px 0 30px;
+}
+
+div.register {
+    padding-top: 80px;
+    width: 90%;
+}
+
+h1.font-big {
+    font-size: 4em;
+}
+
+div.middle-login {
+    margin: 80px auto;
+    width: 800px;
+    height: 550px;
+    background-image: url(/DessertHouseWeb/img/login.jpg);
+    box-shadow: 10px 10px 20px #ffffff;
+    border-radius:25px;
+    -moz-border-radius:25px; /* 老的 Firefox */
+}
+
+.loginpanel {
+    text-align: center;
+    width: 300px;
+    border-radius: 0.5rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 10px auto;
+    background-color: transparent;
+    padding: 20px;
+}
+
+div.dessertpanel {
+	border-radius: 0.5rem;
+	margin: 10px auto;
+    background-color: #EFEFEF;
+    padding: 20px;
+}
+
+h1.login {
+    margin-bottom: 10px;
+    font-weight: normal;
+    color: #EFEFEF;
+}
+
+.bigicon {
+    font-size: 100px;
+    color: white;
+}
+
+.buttonwrapper{
+    position: relative;
+    overflow: hidden;
+    height: 60px;
+}
+
+.loginbutton {
+    background-color: #888888;
+    width: 100%;
+    margin: auto;
+    height: 50px;
+}
+
+
+input.login {
+    width: 100%;
+    margin-bottom: 17px;
+    padding: 15px;
+    background-color: #fcf8e3;
+    border-radius: 2px;
+    border: none;
+}
+
+h1.font-white {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    color: black;
+}
+
+div.bg {
+    background-color: silver;
+    width: 85%;
+    border-radius: 20px;
+    opacity: 0.9;
+    box-shadow: 10px 10px 20px #ffffff;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+hr.division {
+    border-top:10px groove skyblue;
+    height: 5px;
+    color: #080808;
+}
+
+table.waiter-list {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 1.0em;
+    background-color: #faf2cc;
+}
+
+div.pay-bg {
+	
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-image: url(/DessertHouseWeb/img/pay_pic.jpg);
+	border-radius:25px;
+}
+
