@@ -115,10 +115,10 @@ public class StatisticsServlet extends HttpServlet {
 				n4++;
 			}
 		}
-		ageData[0] = n1 / (n1 + n2 + n3 + n4) * 100 + "%";
-		ageData[1] = n2 / (n1 + n2 + n3 + n4) * 100 + "%";
-		ageData[2] = n3 / (n1 + n2 + n3 + n4) * 100 + "%";
-		ageData[3] = n4 / (n1 + n2 + n3 + n4) * 100 + "%";
+		ageData[0] = n1 / (n1 + n2 + n3 + n4) * 100 + "";
+		ageData[1] = n2 / (n1 + n2 + n3 + n4) * 100 + "";
+		ageData[2] = n3 / (n1 + n2 + n3 + n4) * 100 + "";
+		ageData[3] = n4 / (n1 + n2 + n3 + n4) * 100 + "";
 		session.setAttribute("ageData", ageData);
 
 		String[] genderData = new String[2];
@@ -133,8 +133,8 @@ public class StatisticsServlet extends HttpServlet {
 				g2++;
 			}
 		}
-		genderData[0] = g1 / (g1 + g2) * 100 + "%";
-		genderData[1] = g2 / (g1 + g2) * 100 + "%";
+		genderData[0] = g1 / (g1 + g2) * 100 + "";
+		genderData[1] = g2 / (g1 + g2) * 100 + "";
 		session.setAttribute("genderData", genderData);
 
 		HashMap<String, Integer> dessertRank = new HashMap<String, Integer>();
@@ -162,6 +162,40 @@ public class StatisticsServlet extends HttpServlet {
 			}
 		});
 		session.setAttribute("dessertRank", infoIds);
+
+		int[] addressData = new int[5];
+		int a1 = 0;
+		int a2 = 0;
+		int a3 = 0;
+		int a4 = 0;
+		int a5 = 0;
+		for (int i = 0; i < userlist.size(); i++) {
+			User user = (User) userlist.get(i);
+			String address = user.getAddress();
+			switch (address) {
+			case "Asia":
+				a1++;
+				break;
+			case "America":
+				a2++;
+				break;
+			case "Europe":
+				a3++;
+				break;
+			case "Africa":
+				a4++;
+				break;
+			case "Oceania":
+				a5++;
+				break;
+			}
+		}
+		addressData[0] = a1;
+		addressData[1] = a2;
+		addressData[2] = a3;
+		addressData[3] = a4;
+		addressData[4] = a5;
+		session.setAttribute("addressData", addressData);
 
 		orderbean.setOrderlist(orderlist);
 		session.setAttribute("manager_orderbean", orderbean);

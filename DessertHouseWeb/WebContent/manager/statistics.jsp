@@ -12,6 +12,7 @@
     <script src="<%=request.getContextPath() + "/js/jquery.min.js"%>"></script>
     <script src="<%=request.getContextPath() + "/bootstrap-3.3.5-dist/js/bootstrap.min.js"%>"></script>
     <script src="<%=request.getContextPath() + "/js/myscript.js"%>"></script>
+    <script src="<%=request.getContextPath() + "/Chart.js-master/Chart.js"%>"></script>
 
 </head>
 <body class="main">
@@ -67,9 +68,11 @@
 <%
 	pageContext.setAttribute("manager", manager_managerbean.getManager());
  	String[] ageData = (String[]) session.getAttribute("ageData");
+ 	int[] addressData= (int[]) session.getAttribute("addressData");
  	String[] genderData = (String[]) session.getAttribute("genderData");
  	List<Map.Entry<String, Integer>> dessertRank = (List<Map.Entry<String, Integer>>) session.getAttribute("dessertRank");
 %>
+
 <div class="container bg">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -80,19 +83,54 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <h3>各年龄段百分比</h3>
-            <h4>0-15岁: <%=ageData[0]%></h4>
-            <h4>16-30岁: <%=ageData[1]%></h4>
-            <h4>31-60: <%=ageData[2]%></h4>
-            <h4>60以上: <%=ageData[3]%></h4>
-        </div>
-        <div class="col-md-6">
-            <h3>性别</h3>
-            <h4>男性: <%=genderData[0]%></h4>
-            <h4>女性: <%=genderData[1]%></h4>
-        </div>
+    	<div class="col-md-6">
+    		<h3>性别</h3>
+            <h4 style="background-color: green">男性:</h4>
+            <h4 style="background-color: pink">女性:</h4>
+            <canvas id="myChart_1" width="300" height="300"></canvas>
+    	</div>
+    	<div class="col-md-6">
+        	<h3>地区分布</h3>
+    		<canvas id="myChart_2" width="300" height="300"></canvas>
+    	</div>
     </div>
+    <div class="row">
+    	<div class="col-md-7">
+    		<h3>各年龄段百分比</h3>
+            <p style="background-color: #F38630">0-15岁</p>
+            <p style="background-color: #30E4CC">16-30岁</p>
+            <p style="background-color: #F0EF7C">31-60</p>
+            <p style="background-color: #69D2E7">60以上</p>
+    	</div>
+    	<div class="col-md-5">
+        	<canvas id="myChart" width="300" height="300"></canvas>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<h1>热卖排行：</h1>
+    		<table class="table waiter-list">
+    			<thead>
+                <tr>
+                    <th>甜品		卖出数量</th>
+                </tr>
+                </thead>
+                <tbody>
+    			<%
+    				for(int i=0;i<dessertRank.size();i++){
+    					String str = dessertRank.get(i).toString();
+    			%>
+    			<tr>
+    				<td><%=str %></td>
+    			</tr>
+    			<%
+    				}
+    			%>
+    			</tbody>
+    		</table>
+    	</div>
+    </div>
+    
     <div class="row">
         <div class="col-md-12">
             <h2>会员列表</h2>
@@ -107,7 +145,7 @@
                     <th>状态</th>
                     <th>积分</th>
                     <th>等级</th>
-                    <th>地址</th>
+                    <th>地区</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -134,28 +172,6 @@
         </div>
     </div>
     <div class="row">
-    	<div class="col-md-12">
-    		<h1>热卖排行：</h1>
-    		<table class="table waiter-list">
-    			<thead>
-                <tr>
-                    <th>甜品		卖出数量</th>
-                </tr>
-                </thead>
-                <tbody>
-    			<%
-    				for(int i=0;i<dessertRank.size();i++){
-    					String str = dessertRank.get(i).toString();
-    			%>
-    			<tr>
-    				<td><%=str %></td>
-    			</tr>
-    			<%
-    				}
-    			%>
-    			</tbody>
-    		</table>
-    	</div>
         <div class="col-md-12">
             <h1>预定销售情况</h1>
             <table class="table waiter-list">
@@ -197,6 +213,64 @@
 	<img src="/DessertHouseWeb/img/logo.jpg" class="img-responsive img-circle center-block" 
 		style="opacity: 0.8"> 
 </div>
+
+<script>
+var data = [
+        	{
+        		value: <%=ageData[0]%>,
+        		color:"#F38630"
+        	},
+        	{
+        		value : <%=ageData[1]%>,
+        		color : "#30E4CC"
+        	},
+        	{
+        		value : <%=ageData[2]%>,
+        		color : "#F0EF7C"
+        	},
+        	{
+        		value : <%=ageData[3]%>,
+        		color : "#69D2E7"
+        	}			
+        ]
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var myNewChart = new Chart(ctx).Pie(data);
+</script>
+
+<script>
+
+var data_1 = [
+          	{
+          		value: <%=genderData[0]%>,
+          		color:"green"
+          	},
+          	{
+          		value : <%=genderData[1]%>,
+          		color : "pink"
+          	}
+          ]
+var ctx_1 = document.getElementById("myChart_1").getContext("2d");
+var myNewChart_1 = new Chart(ctx_1).Doughnut(data_1);
+
+</script>
+
+<script>
+
+var data_2 = {
+          	labels : ["Asia","America","Europe","Africa","Oceania"],
+			datasets : [
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					data : [<%=addressData[0]%>,<%=addressData[1]%>,<%=addressData[2]%>,<%=addressData[3]%>,<%=addressData[4]%>]
+				}
+			]
+}
+var ctx_2 = document.getElementById("myChart_2").getContext("2d");
+var myNewChart_2 = new Chart(ctx_2).Bar(data_2);
+
+</script>
 
 <footer>
     <div class="container">

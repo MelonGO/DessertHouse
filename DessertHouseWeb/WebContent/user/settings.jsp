@@ -138,9 +138,14 @@
                        value="<jsp:getProperty name="item" property="age"/>">
             </div>
             <div class="form-group">
-                <label for="address">地址：</label>
-                <input type="text" class="form-control input-lg" name="address" id="address"
-                       value="<jsp:getProperty name="item" property="address"/>">
+                <label for="address">地区：</label>
+                <select class="form-control input-lg" name="address" id="address">
+                	<option value="Asia">亚洲</option>
+                	<option value="America">美洲</option>
+                	<option value="Europe">欧洲</option>
+                	<option value="Africa">非洲</option>
+                	<option value="Oceania">大洋洲</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-info btn-block fa fa-save fa-2x"></button>
         </form>
@@ -154,6 +159,14 @@
     for(var i = 0; i<sel.length; i++){
     	if(sel.options[i].value == val){
     		sel.options[i].selected = 'selected';
+    	}
+    }
+    
+    var sel_1 = document.getElementById("address");
+    var val_1 = "<jsp:getProperty name="item" property="address"/>";
+    for(var i = 0; i<sel_1.length; i++){
+    	if(sel_1.options[i].value == val_1){
+    		sel_1.options[i].selected = 'selected';
     	}
     }
     

@@ -89,7 +89,7 @@
                     <th>状态</th>
                     <th>积分</th>
                     <th>等级</th>
-                    <th>地址</th>
+                    <th>地区</th>
                 </tr>
                 </thead>
                 <tbody>
