@@ -66,6 +66,9 @@
 			scope="page"></jsp:useBean>
 <%
 	pageContext.setAttribute("manager", manager_managerbean.getManager());
+ 	String[] ageData = (String[]) session.getAttribute("ageData");
+ 	String[] genderData = (String[]) session.getAttribute("genderData");
+ 	List<Map.Entry<String, Integer>> dessertRank = (List<Map.Entry<String, Integer>>) session.getAttribute("dessertRank");
 %>
 <div class="container bg">
     <div class="row">
@@ -79,9 +82,15 @@
     <div class="row">
         <div class="col-md-6">
             <h3>各年龄段百分比</h3>
+            <h4>0-15岁: <%=ageData[0]%></h4>
+            <h4>16-30岁: <%=ageData[1]%></h4>
+            <h4>31-60: <%=ageData[2]%></h4>
+            <h4>60以上: <%=ageData[3]%></h4>
         </div>
         <div class="col-md-6">
             <h3>性别</h3>
+            <h4>男性: <%=genderData[0]%></h4>
+            <h4>女性: <%=genderData[1]%></h4>
         </div>
     </div>
     <div class="row">
@@ -125,8 +134,30 @@
         </div>
     </div>
     <div class="row">
+    	<div class="col-md-12">
+    		<h1>热卖排行：</h1>
+    		<table class="table waiter-list">
+    			<thead>
+                <tr>
+                    <th>甜品		卖出数量</th>
+                </tr>
+                </thead>
+                <tbody>
+    			<%
+    				for(int i=0;i<dessertRank.size();i++){
+    					String str = dessertRank.get(i).toString();
+    			%>
+    			<tr>
+    				<td><%=str %></td>
+    			</tr>
+    			<%
+    				}
+    			%>
+    			</tbody>
+    		</table>
+    	</div>
         <div class="col-md-12">
-            <h2>消费记录</h2>
+            <h1>预定销售情况</h1>
             <table class="table waiter-list">
                 <thead>
                 <tr>
