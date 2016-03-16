@@ -1,6 +1,11 @@
 # DessertHouse
 Manage a dessert house.
 
+![image](https://github.com/MelonGO/DessertHouse/raw/master/screenshot/s4.jpg)
+![image](https://github.com/MelonGO/DessertHouse/raw/master/screenshot/s1.jpg)
+![image](https://github.com/MelonGO/DessertHouse/raw/master/screenshot/s2.jpg)
+![image](https://github.com/MelonGO/DessertHouse/raw/master/screenshot/s3.jpg)
+
 ##会员
 * 注册
   * 每位会员持有一张会员卡（7位识别码，系统自动分配）
